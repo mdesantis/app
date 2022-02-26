@@ -10,6 +10,28 @@ module Docs
     FilesExistsError       = Class.new(Error)
     GitFilesDontExistError = Class.new(Error)
 
+    EXCLUDE_GLOB_PATTERNS = %w[
+      **/vendor
+      */config
+      */db
+      */guides
+      */test
+      basictest
+      benchmark
+      bin
+      bootstraptest
+      ci
+      example
+      ext/-test-
+      guides
+      misc
+      sample
+      spec
+      tasks
+      test
+      tool
+      tools
+    ]
     FILES_TO_CHECK = [
       SDoc::Merge::FLAG_FILE,
       RDoc::Generator::SDoc::TREE_FILE,
@@ -39,11 +61,11 @@ module Docs
         options.title        = doc.name
         options.op_dir       = doc.local_path
         options.main_page    = main_file
-        options.exclude      = %w(test example bin).select(&File.method(:exist?)).map { |dir| "\\b#{dir}\/" }
+        options.exclude      = Dir.glob(EXCLUDE_GLOB_PATTERNS).map { |dir| "\\b#{dir}\/" }
         options.files        = Dir['**/*.{c,rb,rdoc}']
         options.visibility   = :private
 
-        5.tries on: [Errno::EPIPE, IncompleteError] do
+        1.tries on: [Errno::EPIPE, IncompleteError] do
           begin
             RDoc::RDoc.new.document options
           rescue RDoc::Error
