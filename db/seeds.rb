@@ -11,5 +11,5 @@ projects = project_data.map do |name, git|
     Projects::Clone.call project
   rescue Projects::Clone::FilesExistsError
   end
-  Projects::UpdateTags.call project.id
+  Projects::UpdateTags.call project
 end
