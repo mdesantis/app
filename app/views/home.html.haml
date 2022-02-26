@@ -27,7 +27,7 @@
           Please add the project info below and I will add it to RubyDocs asap! :)
         %p
           If you have any questions,
-          = mail_to ENV.fetch('MAIL_FROM'), 'let me know!'
+          = mail_to ENV.fetch('MAIL_FROM', 'mail.from@example.org'), 'let me know!'
         = form_tag 'https://formspree.io/f/mqkgnayq', target: '_blank' do
           .form-group
             = text_field_tag 'name', nil, class: 'form-control', required: true, placeholder: 'Your name'

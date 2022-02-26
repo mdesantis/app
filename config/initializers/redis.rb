@@ -5,5 +5,5 @@ if %w(development test).include?(Rails.env)
 end
 
 Redis.current = ConnectionPool::Wrapper.new(size: 10) do
-  Redis.new url: ENV.fetch('REDIS_URL')
+  Redis.new url: ENV.fetch('REDIS_URL') { 'redis://localhost:6379' }
 end

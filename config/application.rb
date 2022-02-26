@@ -15,11 +15,11 @@ module RubyDocs
       show-doc-collection.css
     )
 
-    config.secret_key_base = ENV.fetch('SECRET_KEY_BASE')
+    config.secret_key_base = ENV.fetch('SECRET_KEY_BASE') { 'abc123' }
 
     Rails.application.routes.default_url_options =
       config.action_mailer.default_url_options = {
-        host:     ENV.fetch('HOST'),
+        host:     ENV.fetch('HOST') { 'localhost' },
         protocol: ENV['PROTOCOL'] || 'http'
       }
 
