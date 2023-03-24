@@ -466,6 +466,7 @@ DEPENDENCIES
   rack-cors (~> 1.0)
   rack-mini-profiler (~> 1.0)
   rails (~> 4.2.7)
+  rails-assets-jquery!
   rails-assets-jquery-cookie (~> 1.4)!
   rails-assets-jquery.smooth-scroll (~> 1.4)!
   rails-assets-select2 (~> 4.0)!

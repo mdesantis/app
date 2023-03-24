@@ -38,6 +38,7 @@ gem 'sitemap_generator',      '~> 6.0'
 gem 'sprockets',              '~> 3.7'
 
 source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery'
   gem 'rails-assets-jquery.smooth-scroll',      '~> 1.4'
   gem 'rails-assets-jquery-cookie',             '~> 1.4'
   gem 'rails-assets-select2',                   '~> 4.0'

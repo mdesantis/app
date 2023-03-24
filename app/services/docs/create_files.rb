@@ -15,7 +15,6 @@ module Docs
       */config
       */db
       */guides
-      */test
       basictest
       benchmark
       bin
@@ -61,9 +60,12 @@ module Docs
         options.title        = doc.name
         options.op_dir       = doc.local_path
         options.main_page    = main_file
-        options.exclude      = Dir.glob(EXCLUDE_GLOB_PATTERNS).map { |dir| "\\b#{dir}\/" }
-        options.files        = Dir['**/*.{c,rb,rdoc}']
+        # options.exclude      = Dir.glob(EXCLUDE_GLOB_PATTERNS).map { |dir| "\\b#{dir}\/" }
+        options.files        = Dir['lib/**/*']
         options.visibility   = :private
+
+        pp Dir.glob(EXCLUDE_GLOB_PATTERNS)
+        pp options.exclude
 
         1.tries on: [Errno::EPIPE, IncompleteError] do
           begin
@@ -80,5 +82,13 @@ module Docs
       end
       doc
     end
+
+    # def exclude_glob_patterns(doc)
+    #   if doc.
+    #   else
+    #     EXCLUDE_GLOB_PATTERNS
+    #   end
+
+    # end
   end
 end
